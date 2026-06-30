@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags: []
+  tags:
+  - Obstacles
+  - Decor
+  - NPC
   layers:
   - Default
   - TransparentFX
@@ -40,6 +43,21 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: BG
+    uniqueID: 2004440319
+    locked: 0
+  - name: Decor
+    uniqueID: 2481147815
+    locked: 0
+  - name: Obstacles
+    uniqueID: 252148711
+    locked: 0
+  - name: Player
+    uniqueID: 139398319
+    locked: 0
+  - name: NPC
+    uniqueID: 1318220541
     locked: 0
   m_RenderingLayers:
   - Default
