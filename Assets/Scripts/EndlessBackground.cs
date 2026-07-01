@@ -3,30 +3,30 @@ using UnityEngine;
 public class EndlessBackground : MonoBehaviour
 {
     [Header("Loop Settings")]
-    [SerializeField] private float speed = 5f;
-    [SerializeField] private int totalTilesInChain = 2; // Set this to 2 or 4 
+    [SerializeField] private int totalTilesInChain = 3;
 
+    private SpriteRenderer spriteRenderer;
     private float backgroundWidth;
-    private float leftBoundary;
+    private float camLeftEdge;
 
     void Start()
     {
-        // 1. Calculate the width of this specific background sprite
-        backgroundWidth = GetComponent<SpriteRenderer>().bounds.size.x;
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        backgroundWidth = spriteRenderer.bounds.size.x;
 
-        // 2. Teleport when the tile completely clears the left side of the screen
-        leftBoundary = -backgroundWidth;
+        camLeftEdge = Camera.main.transform.position.x
+            - (Camera.main.orthographicSize * Camera.main.aspect);
     }
 
     void Update()
     {
-        // 3. Constantly scroll the world to the left past our stationary player
+        float speed = WorldManager.Instance != null ? WorldManager.Instance.currentWorldSpeed : 5f;
         transform.Translate(Vector2.left * speed * Time.deltaTime);
 
-        // 4. Multi-Tile Leapfrog: Teleport to the very end of the line
-        if (transform.position.x <= leftBoundary)
+        // bounds.max.x is the sprite's actual right edge in world space,
+        // correct no matter where the pivot is set.
+        if (spriteRenderer.bounds.max.x <= camLeftEdge)
         {
-            // Shifting forward by (Width * Total Tiles) preserves the alternating pattern perfectly
             float shiftDistance = backgroundWidth * totalTilesInChain;
             transform.position += new Vector3(shiftDistance, 0f, 0f);
         }
