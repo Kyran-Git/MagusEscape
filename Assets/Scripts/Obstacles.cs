@@ -7,6 +7,10 @@ using UnityEngine;
 [RequireComponent(typeof(Collider2D))]
 public class Obstacle : MonoBehaviour
 {
+    [Header("Damage Settings")]
+    [SerializeField] private int damageToDeal = 1;
+    [SerializeField] private bool destroyOnHit = true;
+
     private void Reset()
     {
         // Default the collider to a trigger so designers don't forget to set it.
@@ -21,13 +25,17 @@ public class Obstacle : MonoBehaviour
     {
         if (!other.CompareTag("Player")) return;
 
-        if (GameManager.Instance != null)
+        PlayerController player = other.GetComponent<PlayerController>();
+
+        if (player != null)
         {
-            GameManager.Instance.PlayerHitObstacle();
-        }
-        else
-        {
-            Debug.LogWarning("Obstacle hit Player but no GameManager was found in the scene.");
+            player.HitPlayer(damageToDeal);
+
+            // Only clear the asset from the map if it's meant to self-destruct
+            if (destroyOnHit)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }

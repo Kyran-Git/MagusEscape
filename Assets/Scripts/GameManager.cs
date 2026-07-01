@@ -5,8 +5,12 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
-    [Header("UI")]
+    [Header("UI Panels")]
     [SerializeField] private GameObject gameOverPanel;
+
+    [Header("Health System")]
+    [SerializeField] private int maxHealth = 3;
+    public int currentHealth { get; private set; }
 
     public bool IsGameOver { get; private set; }
 
@@ -20,12 +24,33 @@ public class GameManager : MonoBehaviour
         Instance = this;
     }
 
+    private void Start()
+    {
+        // Initialize player health at full on start
+        currentHealth = maxHealth;
+    }
+
     /// <summary>
-    /// Called by Obstacle.cs when the player touches an obstacle.
+    /// Reduces player health and checks for game over condition.
     /// </summary>
-    public void PlayerHitObstacle()
+    public void DamagePlayer(int damage)
     {
         if (IsGameOver) return;
+
+        currentHealth -= damage;
+        Debug.Log($"Player took damage! Current HP: {currentHealth}");
+
+        // Hook up your heart UI animations right here later!
+
+        if (currentHealth <= 0)
+        {
+            currentHealth = 0;
+            TriggerGameOver();
+        }
+    }
+
+    private void TriggerGameOver()
+    {
         IsGameOver = true;
 
         if (gameOverPanel != null)
@@ -33,10 +58,7 @@ public class GameManager : MonoBehaviour
             gameOverPanel.SetActive(true);
         }
 
-        // Freezing timeScale is the simplest way to stop the background,
-        // obstacle spawning, and player physics all at once.
-        // If you later want a death animation to play WHILE the world freezes,
-        // swap this for per-object pausing instead (happy to add that next).
+        // Freeze the world physics
         Time.timeScale = 0f;
     }
 
@@ -44,5 +66,31 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    private void OnGUI()
+    {
+        // 1. Configure the text design styling
+        GUIStyle textStyle = new GUIStyle();
+        textStyle.fontSize = 28;
+        textStyle.fontStyle = FontStyle.Bold;
+        textStyle.normal.textColor = Color.white;
+
+        // 2. Paint the current HP status in the top left corner
+        GUI.Label(new Rect(20, 20, 300, 50), "❤️ HP: " + currentHealth, textStyle);
+
+        // 3. Paint a massive warning indicator if the player is dead
+        if (IsGameOver)
+        {
+            GUIStyle deadStyle = new GUIStyle();
+            deadStyle.fontSize = 48;
+            deadStyle.fontStyle = FontStyle.Bold;
+            deadStyle.normal.textColor = Color.red;
+
+            GUI.Label(new Rect(Screen.width / 2f - 150f, Screen.height / 2f - 60f, 400, 100), "GAME OVER", deadStyle);
+
+            textStyle.fontSize = 18;
+            GUI.Label(new Rect(Screen.width / 2f - 145f, Screen.height / 2f + 10f, 400, 50), "Press 'R' or Click Restart to try again", textStyle);
+        }
     }
 }

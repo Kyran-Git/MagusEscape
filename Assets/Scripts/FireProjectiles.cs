@@ -3,11 +3,13 @@ using UnityEngine;
 [RequireComponent(typeof(Collider2D))]
 public class FireProjectiles : MonoBehaviour
 {
+    [Header("Movement")]
     [SerializeField] private float speed = 8f;
     [SerializeField] private float lifetime = 4f;
-
-    // Set this per-prefab in the Inspector: LeftFire prefab = (-1, 0), RightFire prefab = (1, 0)
     [SerializeField] private Vector2 direction = Vector2.left;
+
+    [Header("Damage")]
+    [SerializeField] private int damageToDeal = 1; // Explicitly added damage parameter
 
     private void Reset()
     {
@@ -29,9 +31,10 @@ public class FireProjectiles : MonoBehaviour
     {
         if (!other.CompareTag("Player")) return;
 
-        if (GameManager.Instance != null)
+        PlayerController player = other.GetComponent<PlayerController>();
+        if (player != null)
         {
-            GameManager.Instance.PlayerHitObstacle();
+            player.HitPlayer(damageToDeal);
         }
 
         Destroy(gameObject);

@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 1038120306}
   - component: {fileID: 1038120305}
   - component: {fileID: 1038120308}
+  - component: {fileID: 1038120309}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -256,6 +257,20 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!114 &1038120309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1038120304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5edc165368badca4aa30b775f01c0e68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SimpleCameraFollow
+  playerTransform: {fileID: 1381398310}
+  aheadOffset: 3
 --- !u!1 &1144283074 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3484807017683048782, guid: 3872f0404d3fc0347a0d11183e75e0e1, type: 3}
@@ -418,6 +433,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 846c0ae75b920bf40bc1b098820c5905, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
+  forwardSpeed: 6
+  maxSpeed: 16
+  speedIncreaseRate: 0.05
   jumpForce: 12
   groundCheckPoint: {fileID: 1524583241}
   groundLayer:

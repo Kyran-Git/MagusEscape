@@ -366,6 +366,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9ae5f1991ce52d418946a83fef43a1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Obstacle
+  damageToDeal: 1
+  destroyOnHit: 1
 --- !u!1 &5572598927890913603
 GameObject:
   m_ObjectHideFlags: 0
@@ -991,9 +993,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5819415461039093298}
     m_Modifications:
+    - target: {fileID: 285204068906235107, guid: 5ce6353cdedde4e4084c5a31d92834d5, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1706786477916492301, guid: 5ce6353cdedde4e4084c5a31d92834d5, type: 3}
       propertyPath: m_Name
       value: BigCrate (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2817811757784357678, guid: 5ce6353cdedde4e4084c5a31d92834d5, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4211424191490809601, guid: 5ce6353cdedde4e4084c5a31d92834d5, type: 3}
       propertyPath: m_LocalPosition.x
