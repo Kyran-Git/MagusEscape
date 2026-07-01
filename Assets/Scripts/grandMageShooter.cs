@@ -52,5 +52,6 @@ public class grandMageShooter : MonoBehaviour
         if (firePrefab == null || firePoint == null) return;
 
         Instantiate(firePrefab, firePoint.position, firePoint.rotation);
+        AudioManager.Instance?.PlayFireball();
     }
 }

@@ -29,7 +29,13 @@ public class Obstacle : MonoBehaviour
 
         if (player != null)
         {
-            player.HitPlayer(damageToDeal);
+            bool tookDamage = player.HitPlayer(damageToDeal);
+
+            // Crate impact sound only plays if the hit actually landed (not shielded)
+            if (tookDamage)
+            {
+                AudioManager.Instance?.PlayHitBox();
+            }
 
             // Only clear the asset from the map if it's meant to self-destruct
             if (destroyOnHit)

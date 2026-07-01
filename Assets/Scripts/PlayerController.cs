@@ -170,6 +170,7 @@ public class PlayerController : MonoBehaviour
     void ExecuteInitialJump()
     {
         rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+        AudioManager.Instance?.PlayJump();
     }
 
     // Now takes a parameter to know if it's an air execution
@@ -178,6 +179,7 @@ public class PlayerController : MonoBehaviour
         isSliding = true;
         isAirSliding = airSlide;
         slideTimer = slideDuration;
+        AudioManager.Instance?.PlaySlide();
 
         // Cut hitbox height in half instantly (works perfectly in mid-air tunnels too!)
         boxCollider.size = new Vector2(originalColliderSize.x, originalColliderSize.y * 0.5f);
@@ -223,7 +225,13 @@ public class PlayerController : MonoBehaviour
 
         if (tookDamage)
         {
+            AudioManager.Instance?.PlayHurt();
             StartCoroutine(IFrameBlinkRoutine());
+        }
+        else
+        {
+            // A shield power-up absorbed the hit instead
+            AudioManager.Instance?.PlayBarrier();
         }
 
         return tookDamage;
