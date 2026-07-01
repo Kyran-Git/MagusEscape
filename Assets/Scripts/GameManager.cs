@@ -115,12 +115,14 @@ public class GameManager : MonoBehaviour
 
     public void OpenSettings()
     {
+        if (pauseMenuPanel != null) pauseMenuPanel.SetActive(false);
         if (settingsPanel != null) settingsPanel.SetActive(true);
     }
 
     public void CloseSettings()
     {
         if (settingsPanel != null) settingsPanel.SetActive(false);
+        if (pauseMenuPanel != null) pauseMenuPanel.SetActive(true);
     }
 
     // ---------------- Power-Ups ----------------
