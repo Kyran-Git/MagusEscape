@@ -637,6 +637,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2750550244959415865}
+  - component: {fileID: 4218567084448340562}
   m_Layer: 0
   m_Name: PowerUps
   m_TagString: Untagged
@@ -660,6 +661,18 @@ Transform:
   - {fileID: 8020815939641661679}
   m_Father: {fileID: 8910041160846802070}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4218567084448340562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6480438334938080090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cacf577dd0c22fe40a287824d6c8f1b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PowerUps
 --- !u!1001 &1282694347118130891
 PrefabInstance:
   m_ObjectHideFlags: 0
