@@ -1,0 +1,780 @@
+fileFormatVersion: 2
+guid: 6b60e16d707c51d4a9e8623cb0ddadc7
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2527834397067784191
+    second: Boost_SpriteSheet_0
+  - first:
+      213: 46443401473142647
+    second: Boost_SpriteSheet_1
+  - first:
+      213: 690240776791886617
+    second: Boost_SpriteSheet_2
+  - first:
+      213: -5156689212591312027
+    second: Boost_SpriteSheet_3
+  - first:
+      213: -8062767352303468619
+    second: Boost_SpriteSheet_4
+  - first:
+      213: 1027004380376742951
+    second: Boost_SpriteSheet_5
+  - first:
+      213: 2570604181036716710
+    second: Boost_SpriteSheet_6
+  - first:
+      213: -8813219744353485059
+    second: Boost_SpriteSheet_7
+  - first:
+      213: 8325419071676265743
+    second: Boost_SpriteSheet_8
+  - first:
+      213: -5667228985537158824
+    second: Boost_SpriteSheet_9
+  - first:
+      213: -1725258032877729107
+    second: Boost_SpriteSheet_10
+  - first:
+      213: 2917713538785356508
+    second: Boost_SpriteSheet_11
+  - first:
+      213: 8784792695730226045
+    second: Boost_SpriteSheet_12
+  - first:
+      213: -4147560030804603713
+    second: Boost_SpriteSheet_13
+  - first:
+      213: 5113884968212039724
+    second: Boost_SpriteSheet_14
+  - first:
+      213: -9082015151597456721
+    second: Boost_SpriteSheet_15
+  - first:
+      213: -7483179629313729693
+    second: Boost_SpriteSheet_16
+  - first:
+      213: -1648348693286200529
+    second: Boost_SpriteSheet_17
+  - first:
+      213: 6381364141408060255
+    second: Boost_SpriteSheet_18
+  - first:
+      213: 6118301629774887822
+    second: Boost_SpriteSheet_19
+  - first:
+      213: -7494673632007789969
+    second: Boost_SpriteSheet_20
+  - first:
+      213: -4079223696234578747
+    second: Boost_SpriteSheet_21
+  - first:
+      213: -1538851948486639097
+    second: Boost_SpriteSheet_22
+  - first:
+      213: 7004878118999528100
+    second: Boost_SpriteSheet_23
+  - first:
+      213: -1408527654368731259
+    second: Boost_SpriteSheet_24
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Boost_SpriteSheet_0
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 386
+        width: 37
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fff2d38bdfba41320800000000000000
+      internalID: 2527834397067784191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boost_SpriteSheet_1
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 393
+        width: 72
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 77fa7fe070005a000800000000000000
+      internalID: 46443401473142647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boost_SpriteSheet_2
+      rect:
+        serializedVersion: 2
+        x: 653
+        y: 385
+        width: 38
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 91b8b26545a349900800000000000000
+      internalID: 690240776791886617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boost_SpriteSheet_3
+      rect:
+        serializedVersion: 2
+        x: 759
+        y: 417
+        width: 53
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 563f7628b72cf68b0800000000000000
+      internalID: -5156689212591312027
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boost_SpriteSheet_4
+      rect:
+        serializedVersion: 2
+        x: 806
+        y: 401
+        width: 46
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5bfb55bbfcb4b1090800000000000000
+      internalID: -8062767352303468619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boost_SpriteSheet_5
+      rect:
+        serializedVersion: 2
+        x: 1150
+        y: 386
+        width: 44
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 72c302bea07a04e00800000000000000
+      internalID: 1027004380376742951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boost_SpriteSheet_6
+      rect:
+        serializedVersion: 2
+        x: 1251
+        y: 401
+        width: 91
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a2d3dc02ee9ca320800000000000000
+      internalID: 2570604181036716710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boost_SpriteSheet_7
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 289
+        width: 37
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dfef952465721b580800000000000000
+      internalID: -8813219744353485059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boost_SpriteSheet_8
+      rect:
+        serializedVersion: 2
+        x: 353
+        y: 278
+        width: 29
+        height: 107
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f05b6852984d98370800000000000000
+      internalID: 8325419071676265743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boost_SpriteSheet_9
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 294
+        width: 44
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 851a2409345f951b0800000000000000
+      internalID: -5667228985537158824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boost_SpriteSheet_10
+      rect:
+        serializedVersion: 2
+        x: 843
+        y: 266
+        width: 49
+        height: 117
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: daa0f6cb5f6ae08e0800000000000000
+      internalID: -1725258032877729107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boost_SpriteSheet_11
+      rect:
+        serializedVersion: 2
+        x: 1095
+        y: 303
+        width: 46
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cda26ab310dcd7820800000000000000
+      internalID: 2917713538785356508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boost_SpriteSheet_12
+      rect:
+        serializedVersion: 2
+        x: 1333
+        y: 237
+        width: 63
+        height: 143
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d734276b96ad9e970800000000000000
+      internalID: 8784792695730226045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boost_SpriteSheet_13
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 206
+        width: 35
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fbc884f6028e076c0800000000000000
+      internalID: -4147560030804603713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boost_SpriteSheet_14
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 153
+        width: 44
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c280d78b84b28f640800000000000000
+      internalID: 5113884968212039724
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boost_SpriteSheet_15
+      rect:
+        serializedVersion: 2
+        x: 605
+        y: 222
+        width: 42
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa27154965336f180800000000000000
+      internalID: -9082015151597456721
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boost_SpriteSheet_16
+      rect:
+        serializedVersion: 2
+        x: 846
+        y: 137
+        width: 55
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 36bd05456c7662890800000000000000
+      internalID: -7483179629313729693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boost_SpriteSheet_17
+      rect:
+        serializedVersion: 2
+        x: 1110
+        y: 220
+        width: 42
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f2b52b6c893ef19e0800000000000000
+      internalID: -1648348693286200529
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boost_SpriteSheet_18
+      rect:
+        serializedVersion: 2
+        x: 1347
+        y: 125
+        width: 45
+        height: 106
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f530b0f60e82f8850800000000000000
+      internalID: 6381364141408060255
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boost_SpriteSheet_19
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 40
+        width: 71
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e8bfc678ae298e450800000000000000
+      internalID: 6118301629774887822
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boost_SpriteSheet_20
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 49
+        width: 56
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f6260b84a029df790800000000000000
+      internalID: -7494673632007789969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boost_SpriteSheet_21
+      rect:
+        serializedVersion: 2
+        x: 619
+        y: 55
+        width: 81
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ccf49239afa367c0800000000000000
+      internalID: -4079223696234578747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boost_SpriteSheet_22
+      rect:
+        serializedVersion: 2
+        x: 841
+        y: 45
+        width: 54
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 70249885e46e4aae0800000000000000
+      internalID: -1538851948486639097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boost_SpriteSheet_23
+      rect:
+        serializedVersion: 2
+        x: 1123
+        y: 42
+        width: 75
+        height: 123
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a29fd92983563160800000000000000
+      internalID: 7004878118999528100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boost_SpriteSheet_24
+      rect:
+        serializedVersion: 2
+        x: 1337
+        y: 31
+        width: 54
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 58f9901af87e37ce0800000000000000
+      internalID: -1408527654368731259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Boost_SpriteSheet_0: 2527834397067784191
+      Boost_SpriteSheet_1: 46443401473142647
+      Boost_SpriteSheet_10: -1725258032877729107
+      Boost_SpriteSheet_11: 2917713538785356508
+      Boost_SpriteSheet_12: 8784792695730226045
+      Boost_SpriteSheet_13: -4147560030804603713
+      Boost_SpriteSheet_14: 5113884968212039724
+      Boost_SpriteSheet_15: -9082015151597456721
+      Boost_SpriteSheet_16: -7483179629313729693
+      Boost_SpriteSheet_17: -1648348693286200529
+      Boost_SpriteSheet_18: 6381364141408060255
+      Boost_SpriteSheet_19: 6118301629774887822
+      Boost_SpriteSheet_2: 690240776791886617
+      Boost_SpriteSheet_20: -7494673632007789969
+      Boost_SpriteSheet_21: -4079223696234578747
+      Boost_SpriteSheet_22: -1538851948486639097
+      Boost_SpriteSheet_23: 7004878118999528100
+      Boost_SpriteSheet_24: -1408527654368731259
+      Boost_SpriteSheet_3: -5156689212591312027
+      Boost_SpriteSheet_4: -8062767352303468619
+      Boost_SpriteSheet_5: 1027004380376742951
+      Boost_SpriteSheet_6: 2570604181036716710
+      Boost_SpriteSheet_7: -8813219744353485059
+      Boost_SpriteSheet_8: 8325419071676265743
+      Boost_SpriteSheet_9: -5667228985537158824
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
