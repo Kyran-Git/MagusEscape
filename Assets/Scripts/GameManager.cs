@@ -7,12 +7,32 @@ public class GameManager : MonoBehaviour
 
     [Header("UI Panels")]
     [SerializeField] private GameObject gameOverPanel;
+    [SerializeField] private GameObject pauseMenuPanel;
+    [SerializeField] private GameObject settingsPanel;
 
     [Header("Health System")]
     [SerializeField] private int maxHealth = 3;
     public int currentHealth { get; private set; }
 
+    [Header("Power-Up Settings")]
+    [SerializeField] private int shieldOrbCapacity = 3;
+    [SerializeField] private float boostDuration = 3f;
+    [SerializeField] private float boostSpeedMultiplier = 1.2f;
+
+    [Header("Power-Up Icons (drag matching sprites here)")]
+    [SerializeField] private Sprite bookShieldIcon;
+    [SerializeField] private Sprite shieldOrbIcon;
+    [SerializeField] private Sprite boostIcon;
+
     public bool IsGameOver { get; private set; }
+    public bool IsPaused { get; private set; }
+
+    private bool hasBookShield = false;
+    private int shieldOrbRemaining = 0;
+    private bool isBoostActive = false;
+    private float boostTimer = 0f;
+
+    private PlayerController player;
 
     private void Awake()
     {
@@ -26,27 +46,156 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        // Initialize player health at full on start
         currentHealth = maxHealth;
+        player = FindObjectOfType<PlayerController>();
     }
 
-    /// <summary>
-    /// Reduces player health and checks for game over condition.
-    /// </summary>
-    public void DamagePlayer(int damage)
+    private void Update()
+    {
+        HandleRestartInput();
+        HandlePauseInput();
+        TickBoostTimer();
+    }
+
+    private void HandleRestartInput()
+    {
+        if (IsGameOver && Input.GetKeyDown(KeyCode.R))
+        {
+            RestartGame();
+        }
+    }
+
+    private void HandlePauseInput()
     {
         if (IsGameOver) return;
 
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
+        {
+            TogglePause();
+        }
+    }
+
+    private void TickBoostTimer()
+    {
+        if (!isBoostActive) return;
+
+        // Time.deltaTime is 0 while paused/game over, so this naturally freezes too.
+        boostTimer -= Time.deltaTime;
+        if (boostTimer <= 0f)
+        {
+            isBoostActive = false;
+            if (player != null) player.SetSpeedBoost(1f, false);
+        }
+    }
+
+    // ---------------- Pause Menu ----------------
+
+    public void TogglePause()
+    {
+        if (IsPaused) ResumeGame();
+        else PauseGame();
+    }
+
+    public void PauseGame()
+    {
+        if (IsGameOver) return;
+
+        IsPaused = true;
+        Time.timeScale = 0f;
+        if (pauseMenuPanel != null) pauseMenuPanel.SetActive(true);
+    }
+
+    public void ResumeGame()
+    {
+        IsPaused = false;
+        Time.timeScale = 1f;
+        if (pauseMenuPanel != null) pauseMenuPanel.SetActive(false);
+        if (settingsPanel != null) settingsPanel.SetActive(false);
+    }
+
+    public void OpenSettings()
+    {
+        if (settingsPanel != null) settingsPanel.SetActive(true);
+    }
+
+    public void CloseSettings()
+    {
+        if (settingsPanel != null) settingsPanel.SetActive(false);
+    }
+
+    // ---------------- Power-Ups ----------------
+
+    public void CollectPowerUp(PowerUpType type)
+    {
+        switch (type)
+        {
+            case PowerUpType.BookShield:
+                hasBookShield = true;
+                break;
+
+            case PowerUpType.ShieldOrb:
+                shieldOrbRemaining = shieldOrbCapacity;
+                break;
+
+            case PowerUpType.Boost:
+                StartBoost();
+                break;
+        }
+    }
+
+    private void StartBoost()
+    {
+        if (player == null) player = FindObjectOfType<PlayerController>();
+
+        isBoostActive = true;
+        boostTimer = boostDuration;
+
+        if (player != null) player.SetSpeedBoost(boostSpeedMultiplier, true);
+    }
+
+    // ---------------- Damage / Health ----------------
+
+    /// <summary>
+    /// Reduces player health after accounting for any active shields.
+    /// Returns true if real damage got through (used to decide whether
+    /// to play hit reactions like invincibility blink or speed penalties).
+    /// </summary>
+    public bool DamagePlayer(int damage)
+    {
+        if (IsGameOver) return false;
+
+        // Book shield: blocks this hit completely, one-time use.
+        if (hasBookShield)
+        {
+            hasBookShield = false;
+            Debug.Log("Book shield absorbed the hit completely!");
+            return false;
+        }
+
+        // Shield orb: absorbs damage out of its remaining pool.
+        if (shieldOrbRemaining > 0)
+        {
+            int absorbed = Mathf.Min(shieldOrbRemaining, damage);
+            shieldOrbRemaining -= absorbed;
+            damage -= absorbed;
+
+            if (damage <= 0)
+            {
+                Debug.Log("Shield orb absorbed the hit! Remaining shield: " + shieldOrbRemaining);
+                return false;
+            }
+        }
+
         currentHealth -= damage;
         Debug.Log($"Player took damage! Current HP: {currentHealth}");
-
-        // Hook up your heart UI animations right here later!
 
         if (currentHealth <= 0)
         {
             currentHealth = 0;
             TriggerGameOver();
         }
+
+        return true;
     }
 
     private void TriggerGameOver()
@@ -79,7 +228,35 @@ public class GameManager : MonoBehaviour
         // 2. Paint the current HP status in the top left corner
         GUI.Label(new Rect(20, 20, 300, 50), "❤️ HP: " + currentHealth, textStyle);
 
-        // 3. Paint a massive warning indicator if the player is dead
+        // 3. Paint active power-up icons just below the HP text
+        float iconSize = 40f;
+        float iconX = 20f;
+        float iconY = 65f;
+
+        if (hasBookShield && bookShieldIcon != null)
+        {
+            GUI.DrawTexture(new Rect(iconX, iconY, iconSize, iconSize), bookShieldIcon.texture);
+            iconX += iconSize + 10f;
+        }
+
+        if (shieldOrbRemaining > 0 && shieldOrbIcon != null)
+        {
+            GUI.DrawTexture(new Rect(iconX, iconY, iconSize, iconSize), shieldOrbIcon.texture);
+
+            GUIStyle countStyle = new GUIStyle(textStyle);
+            countStyle.fontSize = 16;
+            GUI.Label(new Rect(iconX, iconY + iconSize - 8f, iconSize, 20f), shieldOrbRemaining.ToString(), countStyle);
+
+            iconX += iconSize + 10f;
+        }
+
+        if (isBoostActive && boostIcon != null)
+        {
+            GUI.DrawTexture(new Rect(iconX, iconY, iconSize, iconSize), boostIcon.texture);
+            iconX += iconSize + 10f;
+        }
+
+        // 4. Paint a massive warning indicator if the player is dead
         if (IsGameOver)
         {
             GUIStyle deadStyle = new GUIStyle();

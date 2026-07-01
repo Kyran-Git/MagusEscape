@@ -23,10 +23,14 @@ public class SpikeObstacle : MonoBehaviour
         if (player != null)
         {
             // 1. Inflict damage and trigger invincibility frames
-            player.HitPlayer(damageToDeal);
+            bool tookDamage = player.HitPlayer(damageToDeal);
 
-            // 2. Inflict the physical momentum penalty
-            player.ApplySpeedPenalty(speedReductionPercent);
+            // 2. Only apply the momentum penalty if the hit actually got through
+            //    (a shield power-up may have absorbed it entirely)
+            if (tookDamage)
+            {
+                player.ApplySpeedPenalty(speedReductionPercent);
+            }
         }
     }
 }

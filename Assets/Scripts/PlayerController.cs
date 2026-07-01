@@ -42,6 +42,9 @@ public class PlayerController : MonoBehaviour
     private float slideTimer;
     private bool isHoldingJump;
 
+    // Power-up driven speed multiplier (e.g. Boost power-up), 1 = no boost
+    private float speedMultiplier = 1f;
+
     private Vector2 originalColliderSize;
     private Vector2 originalColliderOffset;
 
@@ -84,8 +87,8 @@ public class PlayerController : MonoBehaviour
         // 3. Cache the Input State Perfectly Every Single Frame
         isHoldingJump = Input.GetKey(KeyCode.UpArrow);
 
-        // 4. Precision Horizontal Velocity Interpolation
-        float targetXVelocity = isSliding ? (masterProgressionSpeed * slideSpeedMultiplier) : masterProgressionSpeed;
+        // 4. Precision Horizontal Velocity Interpolation (boosted by power-up multiplier)
+        float targetXVelocity = (isSliding ? (masterProgressionSpeed * slideSpeedMultiplier) : masterProgressionSpeed) * speedMultiplier;
         actualAppliedSpeed = Mathf.MoveTowards(actualAppliedSpeed, targetXVelocity, speedTransitionSmoothness * Time.deltaTime);
 
         // 5. Jump Trigger Input Window
@@ -203,16 +206,27 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void HitPlayer(int damageValue)
+    /// <summary>
+    /// Applies a hit to the player. Returns true if real damage got through
+    /// (false if a shield power-up absorbed it), so callers can decide whether
+    /// to trigger secondary effects like speed penalties.
+    /// </summary>
+    public bool HitPlayer(int damageValue)
     {
-        if (isInvincible) return;
+        if (isInvincible) return false;
 
+        bool tookDamage = true;
         if (GameManager.Instance != null)
         {
-            GameManager.Instance.DamagePlayer(damageValue);
+            tookDamage = GameManager.Instance.DamagePlayer(damageValue);
         }
 
-        StartCoroutine(IFrameBlinkRoutine());
+        if (tookDamage)
+        {
+            StartCoroutine(IFrameBlinkRoutine());
+        }
+
+        return tookDamage;
     }
 
     /// Drastically drops the player's speed as a physical penalty for hitting sharp hazards.
@@ -222,6 +236,14 @@ public class PlayerController : MonoBehaviour
         actualAppliedSpeed = Mathf.Max(startSpeed, actualAppliedSpeed * penaltyFactor);
 
         Debug.Log("Seryn tripped on spikes! Speed penalized.");
+    }
+
+    /// <summary>
+    /// Called by GameManager when the Boost power-up is collected or expires.
+    /// </summary>
+    public void SetSpeedBoost(float multiplier, bool active)
+    {
+        speedMultiplier = active ? multiplier : 1f;
     }
 
     private System.Collections.IEnumerator IFrameBlinkRoutine()
