@@ -10,6 +10,12 @@ public class AudioManager : MonoBehaviour
 
     [Header("Audio Source")]
     [SerializeField] private AudioSource sfxSource;
+    [SerializeField] private AudioSource musicSource;
+
+    [Header("Background Music (plays in order, looping through the list)")]
+    [SerializeField] private AudioClip[] musicTracks;
+
+    private int currentTrackIndex = 0;
 
     [Header("SFX Clips")]
     [SerializeField] private AudioClip jumpClip;
@@ -36,6 +42,44 @@ public class AudioManager : MonoBehaviour
         {
             sfxSource = gameObject.AddComponent<AudioSource>();
         }
+
+        if (musicSource == null)
+        {
+            musicSource = gameObject.AddComponent<AudioSource>();
+        }
+        musicSource.playOnAwake = false;
+        musicSource.loop = false; // we manually advance to the next track instead of looping one clip
+        musicSource.volume = sfxVolume;
+    }
+
+    private void Start()
+    {
+        if (musicTracks != null && musicTracks.Length > 0)
+        {
+            PlayTrack(0);
+        }
+    }
+
+    private void Update()
+    {
+        // Once the current track finishes, move on to the next one (wrapping around)
+        if (musicTracks != null && musicTracks.Length > 0 && musicSource != null && !musicSource.isPlaying)
+        {
+            PlayNextTrack();
+        }
+    }
+
+    private void PlayTrack(int index)
+    {
+        currentTrackIndex = index;
+        musicSource.clip = musicTracks[currentTrackIndex];
+        musicSource.Play();
+    }
+
+    private void PlayNextTrack()
+    {
+        int nextIndex = (currentTrackIndex + 1) % musicTracks.Length;
+        PlayTrack(nextIndex);
     }
 
     /// <summary>
@@ -44,6 +88,7 @@ public class AudioManager : MonoBehaviour
     public void SetVolume(float volume)
     {
         sfxVolume = Mathf.Clamp01(volume);
+        if (musicSource != null) musicSource.volume = sfxVolume;
     }
 
     public float GetVolume()

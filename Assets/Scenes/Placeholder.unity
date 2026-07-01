@@ -149,6 +149,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AudioManager
   sfxSource: {fileID: 0}
+  musicSource: {fileID: 0}
+  musicTracks:
+  - {fileID: 8300000, guid: 7bd98911d60472b41b83606c3686aa70, type: 3}
+  - {fileID: 8300000, guid: c5bf1efa04af7744297dac621f6a31a4, type: 3}
   jumpClip: {fileID: 8300000, guid: ee6a54f45c1e6d34ca8d2543700bb471, type: 3}
   slideClip: {fileID: 8300000, guid: 954c5dc4af4a2f3469b504b875323af5, type: 3}
   hurtClip: {fileID: 8300000, guid: 7800de1170fe7c94e88ef50cfd329782, type: 3}
@@ -2231,7 +2235,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 846c0ae75b920bf40bc1b098820c5905, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
-  startSpeed: 4
+  startSpeed: 2
   maxSpeed: 16
   speedIncreaseRate: 0.05
   speedTransitionSmoothness: 15
@@ -2244,7 +2248,7 @@ MonoBehaviour:
   jumpCutMultiplier: 0.4
   fallMultiplier: 2.5
   lowJumpMultiplier: 2
-  slideDuration: 0.6
+  slideDuration: 0.8
   slideSpeedMultiplier: 1.35
   iFrameDuration: 1.5
 --- !u!61 &1381398314
@@ -2994,6 +2998,10 @@ MonoBehaviour:
   bookShieldIcon: {fileID: -1131358873778854336, guid: 330978009a2fd544fa333c1855908ecb, type: 3}
   shieldOrbIcon: {fileID: -6717884257390833292, guid: c8940b6eb9a30ca43b24d06f16e7ba92, type: 3}
   boostIcon: {fileID: -5297548781116368952, guid: 51f81f87ddbf09b4894895fd022fdcd5, type: 3}
+  scorePerDistanceUnit: 1
+  multiplierInterval: 5
+  multiplierIncreasePerInterval: 0.25
+  maxMultiplier: 3
 --- !u!114 &1912281767
 MonoBehaviour:
   m_ObjectHideFlags: 0

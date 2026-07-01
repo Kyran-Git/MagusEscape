@@ -24,6 +24,21 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Sprite shieldOrbIcon;
     [SerializeField] private Sprite boostIcon;
 
+    [Header("Score System")]
+    [SerializeField] private float scorePerDistanceUnit = 1f;
+    [SerializeField] private float baseMultiplier = 1.5f;
+    [SerializeField] private float maxMultiplier = 3f;
+    [SerializeField] private float distanceForMaxMultiplier = 200f; // distance needed to ramp from base to max
+
+    public int Score { get; private set; }
+    public float DistanceTraveled { get; private set; }
+    public float CurrentMultiplier { get; private set; }
+
+    private float distanceSinceLastHit = 0f;
+    private float scoreAccumulator = 0f; // holds fractional score between frames
+
+    private float survivalTimer = 0f;
+
     public bool IsGameOver { get; private set; }
     public bool IsPaused { get; private set; }
 
@@ -48,6 +63,7 @@ public class GameManager : MonoBehaviour
     {
         currentHealth = maxHealth;
         player = FindObjectOfType<PlayerController>();
+        CurrentMultiplier = baseMultiplier;
     }
 
     private void Update()
@@ -55,6 +71,7 @@ public class GameManager : MonoBehaviour
         HandleRestartInput();
         HandlePauseInput();
         TickBoostTimer();
+        TickScore();
     }
 
     private void HandleRestartInput()
@@ -88,6 +105,39 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    // ---------------- Score ----------------
+
+    private void TickScore()
+    {
+        if (IsGameOver) return;
+
+        float speed = WorldManager.Instance != null ? WorldManager.Instance.currentWorldSpeed : 0f;
+        float distanceThisFrame = speed * Time.deltaTime;
+        DistanceTraveled += distanceThisFrame;
+        distanceSinceLastHit += distanceThisFrame;
+
+        // Multiplier ramps from baseMultiplier up to maxMultiplier as distance
+        // since the last hit increases, capping out at distanceForMaxMultiplier.
+        float t = Mathf.Clamp01(distanceSinceLastHit / distanceForMaxMultiplier);
+        CurrentMultiplier = Mathf.Lerp(baseMultiplier, maxMultiplier, t);
+
+        // Accumulate fractional score and only commit whole points to Score,
+        // so small per-frame contributions aren't lost to rounding.
+        scoreAccumulator += distanceThisFrame * scorePerDistanceUnit * CurrentMultiplier;
+        int wholePoints = Mathf.FloorToInt(scoreAccumulator);
+        if (wholePoints > 0)
+        {
+            Score += wholePoints;
+            scoreAccumulator -= wholePoints;
+        }
+    }
+
+    private void ResetScoreStreak()
+    {
+        distanceSinceLastHit = 0f;
+        CurrentMultiplier = baseMultiplier;
+    }
+
     // ---------------- Pause Menu ----------------
 
     public void TogglePause()
@@ -115,8 +165,8 @@ public class GameManager : MonoBehaviour
 
     public void OpenSettings()
     {
-        if (pauseMenuPanel != null) pauseMenuPanel.SetActive(false);
         if (settingsPanel != null) settingsPanel.SetActive(true);
+        if (pauseMenuPanel != null) pauseMenuPanel.SetActive(false);
     }
 
     public void CloseSettings()
@@ -191,6 +241,8 @@ public class GameManager : MonoBehaviour
         currentHealth -= damage;
         Debug.Log($"Player took damage! Current HP: {currentHealth}");
 
+        ResetScoreStreak();
+
         if (currentHealth <= 0)
         {
             currentHealth = 0;
@@ -229,6 +281,15 @@ public class GameManager : MonoBehaviour
 
         // 2. Paint the current HP status in the top left corner
         GUI.Label(new Rect(20, 20, 300, 50), "❤️ HP: " + currentHealth, textStyle);
+
+        // 2b. Paint score/distance/multiplier in the top right corner
+        GUIStyle scoreStyle = new GUIStyle(textStyle);
+        scoreStyle.fontSize = 24;
+        scoreStyle.alignment = TextAnchor.UpperRight;
+
+        string multiplierText = CurrentMultiplier > 1f ? $"  (x{CurrentMultiplier:0.00})" : "";
+        string scoreText = $"Score: {Score}{multiplierText}\nDistance: {DistanceTraveled:0} m";
+        GUI.Label(new Rect(Screen.width - 340, 20, 320, 60), scoreText, scoreStyle);
 
         // 3. Paint active power-up icons just below the HP text
         float iconSize = 40f;
